@@ -1,0 +1,17 @@
+.careerCards {
+    width: 350px;
+    height: 168px;
+}
+input[type="file"] {
+    border-radius: 5px;
+     
+}
+ 
+input[type="file"]::-webkit-file-upload-button{
+    background-color: rgba(234, 241, 245, 1);
+    border : none;
+    height: 50px;
+    width: 192px;
+    color: #B0ADAD;
+    font-size: 18px;
+ }

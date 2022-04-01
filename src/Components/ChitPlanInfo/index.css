@@ -1,0 +1,19 @@
+.chit-info-div {
+    padding : 0 140px;  
+}
+.flex-13{
+    flex : 0.13
+}
+.radio-button{
+    margin-left: 19px;
+    margin-top: 10px;
+}
+.radio-div{
+    align-items: center;
+    width : 300px
+}
+.radio-div input {
+    width: 20px;
+    height: 18px;
+}
+ 

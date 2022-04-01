@@ -1,0 +1,56 @@
+
+.first-section {
+  height: 630px;
+  text-align: center;
+  background-image: url('../../assets/Images/landing.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.first-section p {
+  position: absolute;
+  top: 300px;
+  left: 21%;
+  width: 886px;
+  height: 141px;
+  text-align: center;
+  font-weight: bold;
+}
+.second-section {
+  height: 584px;
+  text-align: left;
+  background-color: #eaf1f5;
+  padding: 75px 0px;
+}
+.second-list {
+  width: 972px;
+  margin: 3.5em auto;
+  color: #5a5a5a;
+}
+.video-div {
+  width: 955px;
+  height: 549px;
+  margin:  173px auto;
+  background-color: #C4C4C4;
+}
+.four-section {
+    height: 772px;
+    text-align: center;
+    padding-top: 150px;
+}
+.digital-chits-txt{
+    font-weight: 500;
+    font-size: 35px;
+}
+.four-list{
+    font-weight: 500;
+    font-size: 25px;
+    list-style-type: none;
+    text-align: left;
+    margin-top: 80px; 
+    margin-left: 162px;
+}
+.four-list li {
+    margin :3rem 0;
+}
+
+

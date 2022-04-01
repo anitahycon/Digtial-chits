@@ -1,0 +1,71 @@
+.login-signup-forgot-div{
+    background-color:#FEA47F ;
+    height: 100vh; 
+}
+.h-100 {
+    height: 100vh;
+}
+.w-100{
+    width: 100%;
+}
+.w-50{
+    width: 50%;
+}
+ 
+.w-48{
+    width: 48%;
+}
+.w-32{
+    width: 32%;
+}
+.w-25 {
+    width: 25%;
+}
+.pos-rel {
+    position: relative;
+}
+.pos-abs {
+    position: absolute;
+}
+.d-flex {
+    display: flex;
+}
+.f-colum {
+    flex-direction: column;
+}
+.f-row {
+    flex-direction: row;
+}
+.justify-space{
+    justify-content: space-between;
+}
+.f-wrap {
+    flex-wrap: wrap;
+}
+.center {
+    justify-content: center;
+    align-items: center
+}
+.border-bot {
+    border-bottom : 1px solid #FEA47F;
+}
+.border{
+    border : 1px solid #FEA47F;
+}
+.flex-1 {
+    flex: 1;
+}
+.flex-5{
+    flex : 0.5;
+}
+.flex-2{
+    flex:0.2
+}
+.flex-7{
+    flex:0.7
+}
+.line-ht-34{
+    line-height: 34px;
+}
+ 
+ 
