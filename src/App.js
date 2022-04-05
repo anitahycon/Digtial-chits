@@ -19,6 +19,7 @@ import ChitPlanInfo from "./Components/ChitPlanInfo";
 import Payment from "./Components/Payment";
 import Careers from "./Components/Careers";
 import Apply from "./Components/Careers/Apply";
+import OTP from "./Components/OTP";
 function App() {
   const authValue = useSelector((state) => state.auth.user.isLoginIn);
   return (
@@ -26,6 +27,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/forgotpassword" element={<ForgotPassword />} />
+        <Route path="/forgotpassword/otp" element={<OTP />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/pagenotfound" element={<ErrorPage />} />
       </Routes>

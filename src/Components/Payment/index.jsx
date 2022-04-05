@@ -8,6 +8,7 @@ import Input from "../components/Input";
 import RegButton from "../components/RegButton";
 import { Country, State, City } from "country-state-city";
 import "./index.css";
+import Button from "../components/Button";
 
 const Payment = () => {
   const { state } = useLocation();
@@ -122,9 +123,7 @@ const Payment = () => {
   var d = new Date();
   var currentYear = d.getFullYear();
   var currentMonth = month[d.getMonth()];
-  const [errMsg, setErrMsg] = useState("");
   const [result, setResult] = useState(false);
-
   const [allData, setAllData] = useState({
     cardName: "",
     cardNumber: "",
@@ -239,7 +238,7 @@ const Payment = () => {
       }));
     }
     setIsValid(isFormValid);
-    console.log("isFormValid",isFormValid)
+    
     return isFormValid;
   };
   const payNow = async (e) => {
@@ -257,13 +256,10 @@ const Payment = () => {
     }));
     const inputVal = e.target.value.replace(/ /g, "");
     let inputNumbersOnly = inputVal.replace(/\D/g, "");
-
     if (inputNumbersOnly.length > 16) {
       inputNumbersOnly = inputNumbersOnly.substr(0, 16);
     }
-
     const splits = inputNumbersOnly.match(/.{1,4}/g);
-
     let spacedNumber = "";
     if (splits) {
       spacedNumber = splits.join(" ");
@@ -505,8 +501,7 @@ const Payment = () => {
                   </span>
                 </p>
                 <div className="mt-13 w-100">
-                  <button className="white-bg orange-txt" type="submit">Pay Now</button>
-                  
+                  <RegButton bgColor="white" txtColor="#FEA47F" name="Pay Now" type="submit" orangeBg={false} />
                 </div>
               </div>
             </div>

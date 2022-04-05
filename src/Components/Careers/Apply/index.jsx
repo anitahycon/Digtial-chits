@@ -1,70 +1,234 @@
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import Button from "../../components/Button";
 import DropDown from "../../components/DropDown";
 import Footer from "../../components/Footer";
 import Input from "../../components/Input";
+import RegButton from "../../components/RegButton";
 
 const Apply = () => {
-  const phone = ["IND (+91)", "UK(+44)", "USA(+233)"];
+  const { state } = useLocation();
+  const { positionName, overview, description } = state;
+
+  const newArr = [];
+
+  const [careerData, setCareerData] = useState([
+    {
+      userName: "",
+      phoneNo: "",
+      email: "",
+      positionName: positionName,
+      resume: "",
+    },
+  ]);
+  const [error, setError] = useState({
+    userNameErr: "",
+    phoneNoErr: "",
+    emailErr: "",
+    resumeErr: "",
+  });
+  const [isValid, setIsValid] = useState(false);
+  const getJobDescription = () => {
+    for (var i = 0; i < description.length; i++) {
+      newArr.push(description[i].name);
+    }
+    return (
+      <ul className="mt-13 font-s-24 lght-blc-txt ml-20">
+        {newArr.map((list, i) => (
+          <li key={i}>{list}</li>
+        ))}
+      </ul>
+    );
+  };
+
+  const validate = () => {
+    let isFormValid = true;
+    if (!careerData.userName) {
+      isFormValid = false;
+      setError((prevState) => ({
+        ...prevState,
+        userNameErr: "Please enter user name",
+      }));
+    }
+    if (!careerData.email) {
+      isFormValid = false;
+      setError((prevState) => ({
+        ...prevState,
+        emailErr: "Please enter email",
+      }));
+    }
+    if (!careerData.phoneNo) {
+      isFormValid = false;
+      setError((prevState) => ({
+        ...prevState,
+        phoneNoErr: "Please enter contact number",
+      }));
+    }
+    if (!careerData.resume) {
+      isFormValid = false;
+      setError((prevState) => ({
+        ...prevState,
+        resumeErr: "Please upload resume",
+      }));
+    }
+    setIsValid(isFormValid);
+    return isFormValid;
+  };
+
+  const careerSubmit = async (e) => {
+    e.preventDefault();
+
+    if (validate()) {
+      console.log("form submitted...");
+    }
+  };
+
+  const fileUpload = (e) => {
+    const file = e.target.files[0];
+    var regex = new RegExp("(.*?).(pdf|docx|doc)$");
+    console.log("file size",file.size)
+    if (!regex.test(file.name)) {
+      setError((prevState) => ({
+        ...prevState,
+        resumeErr: "Please upload doc , docx files only",
+      }));
+    }  
+     else {
+      setError((prevState) => ({
+        ...prevState,
+        resumeErr: "",
+      }));
+    }
+    if(file.size > 1e5){ //100000
+      setError((prevState) => ({
+        ...prevState,
+        resumeErr: "Please upload a file smaller than 1 MB",
+      }));
+    }
+    else
+    {
+      setError((prevState) => ({
+        ...prevState,
+        resumeErr: "",
+      }));
+    }
+  };
+
   return (
     <div className="wrapper">
       <div className="content">
         <div className="chit-info-div mt-40">
           <p className="mychits-title1 orange-txt font-s-34 font-w-700 left-txt ">
-            Position Name
+            {positionName}
           </p>
           <div className="w-100 mt-40">
             <p className="orange-txt font-w-700 font-s-28">Overview</p>
             <p className="font-s-24 mt-13 lght-blc-txt line-ht-34">
-              Amet minim mollit non deserunt ullamco est sit aliqua dolor do
-              amet sint. Velit officia consequat duis enim velit mollit.
-              Exercitation veniam consequat sunt nostrud amet. Amet minim mollit
-              non deserunt ullamco est sit aliqua dolor do amet sint.
+              {overview}
             </p>
           </div>
           <div className="w-100 mt-40">
             <p className="orange-txt font-w-700 font-s-28">Job Description</p>
-            <ul className="mt-13 font-s-24 lght-blc-txt ml-20">
-              <li>Amet minim mollit non deserunt ullamco est sit</li>
-              <li>Amet minim mollit non deserunt ullamco est sit</li>
-              <li>Amet minim mollit non deserunt ullamco est sit</li>
-              <li>Amet minim mollit non deserunt ullamco est sit</li>
-            </ul>
+            {getJobDescription()}
           </div>
           <div className="w-100 mt-40">
             <p className="orange-txt font-w-700 font-s-28">Apply</p>
-            <form>
+            <form onSubmit={careerSubmit}>
               <Input
                 category="text"
                 placeholder="Full Name"
                 borderColor="#1B9CFC"
-                onUpdate={() => {}}
+                error={error.userNameErr !== "" && !isValid}
+                errorMsg={error.userNameErr}
+                onUpdate={(e) => {
+                  setCareerData((prevState) => ({
+                    ...prevState,
+                    userName: e.target.value,
+                  }));
+
+                  e.target.value.length <= 0
+                    ? setError((prevState) => ({
+                        ...prevState,
+                        userNameErr: "Please enter user name",
+                      }))
+                    : setError((prevState) => ({
+                        ...prevState,
+                        userNameErr: "",
+                      }));
+                }}
               />
               <Input
                 category="email"
                 placeholder="Email Address"
                 borderColor="#1B9CFC"
-                onUpdate={() => {}}
+                error={error.emailErr !== "" && !isValid}
+                errorMsg={error.emailErr}
+                onUpdate={(e) => {
+                  setCareerData((prevState) => ({
+                    ...prevState,
+                    email: e.target.value,
+                  }));
+
+                  e.target.value.length <= 0
+                    ? setError((prevState) => ({
+                        ...prevState,
+                        emailErr: "Please enter email",
+                      }))
+                    : setError((prevState) => ({
+                        ...prevState,
+                        emailErr: "",
+                      }));
+                }}
               />
-              <div className="d-flex flex-1 mt-n1">
-                <div className="flex-2">
-                  <DropDown
-                    title="Exp Month"
-                    list={phone}
-                    onChageAction={(e) => {}}
-                  />
-                </div>
-                <div className="flex-1 ml-20">
-                  <Input
-                    category="number"
-                    placeholder="Mobile Number"
-                    borderColor="#1B9CFC"
-                    onUpdate={() => {}}
-                  />
-                </div>
+              <Input
+                category="number"
+                placeholder="Mobile Number"
+                borderColor="#1B9CFC"
+                error={error.phoneNoErr !== "" && !isValid}
+                errorMsg={error.phoneNoErr}
+                onUpdate={(e) => {
+                  setCareerData((prevState) => ({
+                    ...prevState,
+                    phoneNo: e.target.value,
+                  }));
+
+                  e.target.value.length <= 0
+                    ? setError((prevState) => ({
+                        ...prevState,
+                        phoneNoErr: "Please enter contact number",
+                      }))
+                    : setError((prevState) => ({
+                        ...prevState,
+                        phoneNoErr: "",
+                      }));
+                  e.target.value.length > 10
+                    ? setError((prevState) => ({
+                        ...prevState,
+                        phoneNoErr: "Please enter only 10 digit contact number",
+                      }))
+                    : setError((prevState) => ({
+                        ...prevState,
+                        phoneNoErr: "",
+                      }));
+                }}
+              />
+              <div className="mb-25">
+                <input
+                  type="file"
+                  className="pinCodeBorder w-100"
+                  onChange={fileUpload}
+                />
+                {error.resumeErr !== "" && !isValid && (
+                  <p className="error">{error.resumeErr}</p>
+                )}
               </div>
-              <div>
-                  <input type="file" className="pinCodeBorder w-100" />
-                 
-              </div>
+              <RegButton
+                bgColor="#FEA47F"
+                txtColor="white"
+                name="Submit"
+                type="submit"
+                orangeBg={true}
+              />
             </form>
           </div>
         </div>

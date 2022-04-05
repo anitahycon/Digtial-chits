@@ -75,6 +75,7 @@ const SignUp = () => {
       )
         .then((response) => response.json())
         .then((data) => {
+          console.log("signup--",data)
           if (data.status === "10001") {
             setShowModal(true);
             setInValidUser(true);

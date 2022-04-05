@@ -8,11 +8,16 @@
   box-sizing: border-box;
   font-size: 18px;
 }
-
+.input-div[type=number]::-webkit-inner-spin-button,
+.input-div[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
 .input-div:focus {
   outline: none !important;
   /* border:1px solid red; */
   box-shadow: 0 0 10px #719ECE;
+   
 }
 .logo {
   /* background-image: url('../../assets/LOGO.png'); */

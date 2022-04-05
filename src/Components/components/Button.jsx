@@ -9,7 +9,7 @@ const Button = (props)=>{
 }
 Button.defaultProps = {
     orangeBg : '',
-    fontWt : 500
+    fontWt : 500,  
 }
 
 export default Button;

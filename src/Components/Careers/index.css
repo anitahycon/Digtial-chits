@@ -1,6 +1,7 @@
 .careerCards {
     width: 350px;
     height: 168px;
+    background-color: #FEA47F;
 }
 input[type="file"] {
     border-radius: 5px;

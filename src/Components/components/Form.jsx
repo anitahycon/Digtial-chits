@@ -10,11 +10,15 @@ const Form = (props) => {
     onLoginSubmit,
     onSignUpSubmit,
     onForgetPasswordSubmit,
+    isError,
+    errorMsg
   } = props;
-   
+  const logo = require("../../assets/Images/logo.png"); 
   return (
     <div className="mainForm">
-      <div className="logo font-s-18 font-w-700"></div>
+      <div className="logo font-s-18 font-w-700">
+        <img src={logo} />
+      </div>
       {blueBtnName === "Send Reset Instructions" && (
         <p className="font-s-16 forgot-password-info">
           Enter the email address you used when you <br /> joined and we’ll send
@@ -28,6 +32,8 @@ const Form = (props) => {
             category={items.category}
             placeholder={items.placeholder}
             onUpdate={items.onUpdate}
+            error={isError}
+            errorMsg={errorMsg}
           />
           {items.errorMsg && <p className="error mt-n10 mb-5">{items.errorMsg}</p>}
         </div>

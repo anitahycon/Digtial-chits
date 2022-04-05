@@ -18,7 +18,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const emailError = useEmailValidate(email);
   const passwordError = usePasswordValidate(password);
-
+ 
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
 
@@ -109,6 +109,7 @@ const Login = () => {
               placeholder: "Email",
               name: "",
               onUpdate: getEmail,
+              // isError : emailError,
               errorMsg: emailError,
             },
             {
@@ -116,6 +117,7 @@ const Login = () => {
               placeholder: "Password",
               name: "",
               onUpdate: getPassword,
+              // isError : passwordError,
               errorMsg: passwordError,
             },
           ]}

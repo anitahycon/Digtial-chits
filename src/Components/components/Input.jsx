@@ -11,6 +11,7 @@ const Input = (props) => {
         placeholder={props.placeholder}
         onChange={props.onUpdate}  
       />
+      
       {error && <p className="error mt-n1">{errorMsg}</p>}
     </div>
   );
