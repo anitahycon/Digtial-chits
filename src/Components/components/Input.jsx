@@ -12,7 +12,7 @@ const Input = (props) => {
         onChange={props.onUpdate}  
       />
       
-      {error && <p className="error mt-n1">{errorMsg}</p>}
+      {error && <p className="error">{errorMsg}</p>}
     </div>
   );
 };

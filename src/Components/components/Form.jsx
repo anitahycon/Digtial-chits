@@ -1,7 +1,7 @@
 import Input from "../components/Input";
 import Button from "./Button";
 import "./common.css";
-import '../Common.css'
+import "../Common.css";
 import "../../Utils/Fonts.css";
 const Form = (props) => {
   const {
@@ -11,9 +11,9 @@ const Form = (props) => {
     onSignUpSubmit,
     onForgetPasswordSubmit,
     isError,
-    errorMsg
+    errorMsg,
   } = props;
-  const logo = require("../../assets/Images/logo.png"); 
+  const logo = require("../../assets/Images/logo.png");
   return (
     <div className="mainForm">
       <div className="logo font-s-18 font-w-700">
@@ -26,7 +26,6 @@ const Form = (props) => {
         </p>
       )}
       {props.fields.map((items, index) => (
-        
         <div key={index}>
           <Input
             category={items.category}
@@ -35,18 +34,22 @@ const Form = (props) => {
             error={isError}
             errorMsg={errorMsg}
           />
-          {items.errorMsg && <p className="error mt-n10 mb-5">{items.errorMsg}</p>}
+          {items.errorMsg && (
+            <p className="error mb-5">{items.errorMsg}</p>
+          )}
         </div>
       ))}
-      <Button
-        name={blueBtnName}
-        onClick={
-          blueBtnName === "Login" || blueBtnName === "Send Reset Instructions"
-            ? onLoginSubmit
-            : onSignUpSubmit
-        }
-        orangeBg={false}
-      />
+      <div className="mt-13">
+        <Button
+          name={blueBtnName}
+          onClick={
+            blueBtnName === "Login" || blueBtnName === "Send Reset Instructions"
+              ? onLoginSubmit
+              : onSignUpSubmit
+          }
+          orangeBg={false}
+        />
+      </div>
       {blueBtnName === "Login" && (
         <button
           onClick={onForgetPasswordSubmit}

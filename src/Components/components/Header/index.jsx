@@ -1,11 +1,13 @@
 import "./index.css";
 import "../../../Utils/Colos.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import "../../../Utils/Layout.css";
 import RegButton from "../RegButton";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../../Features/Auth/AuthSlice";
 import { useState } from "react";
+import { NavLink } from 'react-router-dom';
+
 const Header = ({ isAuth }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -20,16 +22,18 @@ const Header = ({ isAuth }) => {
     setShowList(false);
     navigate("/");
   };
-  
+  const [searchParams, setSearchParams] = useSearchParams();
+  searchParams.get("contactus")
+  console.log("searchParams",searchParams);
   return (
     <div className="header orange-bg">
       <div style={{ width: "70%" }}>
         <div className="logo1 font-s-18 font-w-700"></div>
       </div>
       <ul className="header-list font-w-500 font-s-16">
-        <li>Home</li>
-        <li onClick={()=>navigate('/career')}>Career</li>
-        <li>Contact Us</li>
+        <li><NavLink to='/' activeclassname="active">Home</NavLink></li>
+        <li onClick={()=>navigate('/career')}><NavLink to='/career' activeclassname="active">Career</NavLink></li>
+        <li onClick={()=>navigate('/contactus')}><NavLink to='/contactus' activeclassname="active">Contact Us</NavLink></li>
       </ul>
       {!isAuth && (
         <div className="loginBtn font-s-16">

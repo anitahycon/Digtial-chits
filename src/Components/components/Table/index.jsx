@@ -2,9 +2,6 @@ import RegButton from "../RegButton";
 import "./index.css";
 const CommonTable = (props) => {
   const { header, data, tableKeys, btnColor, btnName, action } = props;
-  console.log("data length---",data.length)
-  console.log("table keys ---",tableKeys)
-
   const dataRender = () =>{
       return (
         <div className="table-data">
@@ -28,9 +25,7 @@ const CommonTable = (props) => {
             </div>
           ))}
         </div>
-      )
-    
-     
+      )   
   }
   return (
     <div className="chit-table">

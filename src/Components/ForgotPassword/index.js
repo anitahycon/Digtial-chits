@@ -87,6 +87,7 @@ const ForgotPassword = () => {
               : setError("");
           }}
         />
+        <div className="my-1em">
         <RegButton
           btnHeight="50px"
           name="Send Reset Instructions"
@@ -96,6 +97,8 @@ const ForgotPassword = () => {
           type="submit"
           borderRad="5"
         />
+        </div>
+       
       </form>
       {showModal && (
         <Popup

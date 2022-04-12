@@ -18,11 +18,9 @@ import { useEffect, useState } from "react";
 
 const Dashboard = () => {
   const userData = useSelector((state) => state.auth.user);
-  console.log("userData--",userData)
   const availableChits = useSelector(
     (state) => state.userchit.saveChitUserDatails
   );
-  console.log("availableChits--",availableChits)
   const chitDetailsData = [];
   const navigate = useNavigate();
   if (!userData.isLoginIn) {
@@ -91,7 +89,7 @@ const Dashboard = () => {
               tableKeys={tableKeys}
               btnColor="rgba(27, 156, 252, 0.4)"
               btnName="Participate"
-              action={() => {}}
+              action={() => {navigate('/dashboard/auction')}}
             />
           </div>
         ) : (

@@ -107,4 +107,47 @@
   border:1.5px solid #1B9BFB;
   padding:5px 10px 30px;
 }
- 
+
+/* *****************timer css */
+.auctionTimer {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border : 5px solid #1B9CFC;
+  background: rgba(27, 156, 252, 0.1);
+}
+
+/* timer */
+.base-timer {
+  position: relative;
+  width: 100px; 
+}
+
+.base-timer__circle {
+  fill: none;
+  color: rgb(24, 194, 241);
+}
+
+.base-timer__path-elapsed {
+  stroke-width: 7px;
+  stroke: rgb(250, 249, 249);
+}
+.base-timer__path-remaining {
+  stroke-width: 7px;
+  stroke-linecap: round;
+  transform: rotate(270deg); 
+  /* transform:rotate(-90 25 25); */
+  /* transform: matrix(1, 0, 0, 1, 0, 0); */
+  transform-origin:center;
+  transition: 1s linear all;
+  stroke: currentColor;
+}
+.base-timer__label {
+  position: absolute;
+  top: 42px;
+  left: 35px;
+  display: flex;
+  color :#1B9CFC;
+  font-size: 16px;
+  font-weight: bold;
+}

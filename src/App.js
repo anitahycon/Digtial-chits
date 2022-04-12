@@ -20,6 +20,9 @@ import Payment from "./Components/Payment";
 import Careers from "./Components/Careers";
 import Apply from "./Components/Careers/Apply";
 import OTP from "./Components/OTP";
+import ResetPassword from "./Components/ResetPassword";
+import ContactUs from "./Components/ContactUs";
+import SpineWheel from "./Components/SpineWheel";
 function App() {
   const authValue = useSelector((state) => state.auth.user.isLoginIn);
   return (
@@ -28,12 +31,15 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/forgotpassword" element={<ForgotPassword />} />
         <Route path="/forgotpassword/otp" element={<OTP />} />
+        <Route path="/forgotpassword/resetpassword" element={<ResetPassword />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/pagenotfound" element={<ErrorPage />} />
+        
       </Routes>
       <Header isAuth={authValue} />
       <Routes>
        
+         
         {authValue ? <Route path="/dashboard" element={<Dashboard />} /> :  <Route path="/" index element={<Home />} /> }
         
         <Route
@@ -45,6 +51,8 @@ function App() {
         <Route path="/chitplans/payment" element={<Payment />} />
         <Route path="/career" element={<Careers />} />
         <Route path="/career/apply" element={<Apply />} />
+        <Route path="/contactus" element={<ContactUs />} />
+        <Route path="/auction/wheel" element={<SpineWheel />} />
         {/* <Route path="*"  element={<Navigate to="/pagenotfound" />}/> */}
       </Routes>
     </Router>

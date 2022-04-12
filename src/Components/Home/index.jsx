@@ -17,8 +17,7 @@ const Home = () =>{
             {/* <Header /> */}
             <div className="content">
                 <div className="white-txt first-section">
-                     
-                    <p className='font-s-40 '>Helping Create Wealth.<br/>
+                    <p className='font-s-40'>Helping Create Wealth.<br/>
                     Empowering people through prosperity. Resulting in inclusive growth.
                     </p>
                 </div>
@@ -31,11 +30,11 @@ const Home = () =>{
                 }  
             </div>
             {/* third section */}
-            <div className="orange-txt first-section">
+            <div className="orange-txt ">
                 <div className='video-div'>
                     <iframe width="100%" height="100%" src="https://www.youtube.com/embed/hsUHq1Yv1Q4" title="YouTube video player" 
-                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen></iframe>
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                     ></iframe>
                 </div>
             </div>
             {/* forth section */}

@@ -109,7 +109,7 @@ const Login = () => {
               placeholder: "Email",
               name: "",
               onUpdate: getEmail,
-              // isError : emailError,
+              isError : emailError,
               errorMsg: emailError,
             },
             {
@@ -117,7 +117,7 @@ const Login = () => {
               placeholder: "Password",
               name: "",
               onUpdate: getPassword,
-              // isError : passwordError,
+              isError : passwordError,
               errorMsg: passwordError,
             },
           ]}

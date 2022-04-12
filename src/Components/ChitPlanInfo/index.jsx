@@ -39,7 +39,7 @@ const ChitPlanInfo = () => {
   let SecondDate = `${StartDateOne.getDate()}-${
     month[StartDateOne.getMonth()]
   }-${StartDateOne.getFullYear()}`;
-
+ 
   if (StartDateOne.getDate() == 1) {
     SecondDate = `${StartDateOne.setDate(15)}-${
       month[StartDateOne.getMonth()]
@@ -50,19 +50,22 @@ const ChitPlanInfo = () => {
   }
 
   if (StartDateOne.getDate() > 1 && StartDateOne.getDate() <= 15) {
+    console.log("date is between 1 to 15",`${StartDateOne.setDate(1)}`);
     FirstDate = `${StartDateOne.setDate(15)}-${
       month[StartDateOne.getMonth()]
     }-${StartDateOne.getFullYear()}`;
     FirstDate = `${StartDateOne.getUTCDate()}-${
       month[StartDateOne.getMonth()]
     }-${StartDateOne.getFullYear()}`;
-    SecondDate = `${StartDateOne.setDate(1)}-${
+    SecondDate = `${StartDateOne.setDate(StartDateOne.getDate() + 30)}-${
       month[StartDateOne.setMonth(StartDateOne.getMonth() + 1)]
     }-${StartDateOne.getFullYear()}`;
     SecondDate = `${StartDateOne.getUTCDate()}-${
       month[StartDateOne.setMonth()]
     }-${StartDateOne.getFullYear()}`;
+    console.log("second date--",SecondDate);
   } else if (StartDateOne.getDate() > 15) {
+    console.log("date is between 16 to 30");
     FirstDate = `${StartDateOne.setDate(1)}-${
       month[StartDateOne.setMonth(StartDateOne.getMonth() + 1)]
     }-${StartDateOne.getFullYear()}`;
@@ -79,7 +82,7 @@ const ChitPlanInfo = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const [installment, setInstallment] = useState();
   const [startDate, setStartDate] = useState();
-    
+ 
   const confirmProceed = () => {
     if (!installment) {
       setErrorMsg(" *Please select installment");

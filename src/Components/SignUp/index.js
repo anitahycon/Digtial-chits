@@ -6,7 +6,7 @@ import Popup from "../components/Popup";
 import useNameValidate from "../../Hooks/getUserNameValidate";
 import useEmailValidate from "../../Hooks/getEmailValidate";
 import usePasswordValidate from "../../Hooks/getPasswordValidate";
-import  {useNavigate}  from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Config } from "../../Config";
 
 const SignUp = () => {
@@ -46,15 +46,18 @@ const SignUp = () => {
     setPassword(e.target.value);
   };
   const loginClick = () => {
-    navigate('/login')
-    // history.push("/login");
+    navigate("/login");
   };
   const apiInfo = {
-    method: "POST", 
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify({
-      username: userName,
       email: email,
       password: password,
+      username: userName,
     }),
   };
   const alreadyExist = () => {
@@ -70,12 +73,14 @@ const SignUp = () => {
       password
     ) {
       fetch(
-        Config.API_URL + Config.API.SIGN_UP,
+        // Config.API_URL + Config.API.SIGN_UP,
+        "https://digitalchits-backend-v3.azurewebsites.net/user/signup",
         apiInfo
       )
+        // .then((response) => response.json())
         .then((response) => response.json())
         .then((data) => {
-          console.log("signup--",data)
+          console.log("signup--", data);
           if (data.status === "10001") {
             setShowModal(true);
             setInValidUser(true);

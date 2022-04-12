@@ -1,0 +1,17 @@
+.contactForm {
+    margin : 92px 317px 0;
+}
+.mesgTxtArea{
+    border-radius: 5px;
+    height: 150px;
+    resize: vertical;
+    font-family: 'roboto';
+    width:890px;
+    resize: none;
+    overflow: hidden;
+	padding:10px;
+}
+.mesgTxtArea:focus {
+    outline: none !important;
+    box-shadow: 0 0 10px #719ECE; 
+  }

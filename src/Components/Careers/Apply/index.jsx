@@ -92,26 +92,26 @@ const Apply = () => {
         ...prevState,
         resumeErr: "Please upload doc , docx files only",
       }));
-    }  
+    } else if(file.size > 1e5){ //100000
+      setError((prevState) => ({
+        ...prevState,
+        resumeErr: "Please upload a file smaller than 1 MB",
+      }));
+    } 
      else {
       setError((prevState) => ({
         ...prevState,
         resumeErr: "",
       }));
     }
-    if(file.size > 1e5){ //100000
-      setError((prevState) => ({
-        ...prevState,
-        resumeErr: "Please upload a file smaller than 1 MB",
-      }));
-    }
-    else
-    {
-      setError((prevState) => ({
-        ...prevState,
-        resumeErr: "",
-      }));
-    }
+    
+    // else
+    // {
+    //   setError((prevState) => ({
+    //     ...prevState,
+    //     resumeErr: "",
+    //   }));
+    // }
   };
 
   return (
@@ -212,12 +212,13 @@ const Apply = () => {
                       }));
                 }}
               />
-              <div className="mb-25">
+              <div className="my-15">
                 <input
                   type="file"
                   className="pinCodeBorder w-100"
                   onChange={fileUpload}
                 />
+                
                 {error.resumeErr !== "" && !isValid && (
                   <p className="error">{error.resumeErr}</p>
                 )}

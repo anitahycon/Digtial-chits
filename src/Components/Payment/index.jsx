@@ -314,7 +314,7 @@ const Payment = () => {
                   onChange={cardNumberValidate}
                 />
                 {error.cardNumberErr !== "" && !isValid && (
-                  <p className="error mt-n1">Please enter card number</p>
+                  <p className="error">Please enter card number</p>
                 )}
 
                 <div className="mt-13">
@@ -433,7 +433,7 @@ const Payment = () => {
                   />
                 </div>
                 {/* <div className="d-flex"> */}
-                <div className="d-flex flex-1 justify-space mt-n1">
+                <div className="d-flex flex-1 justify-space">
                   <div className="w-48">
                     <select className="exp-month" onChange={statesHandler}>
                       <option>State</option>
